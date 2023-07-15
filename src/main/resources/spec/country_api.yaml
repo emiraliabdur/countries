@@ -1,0 +1,51 @@
+openapi: '3.0.1'
+info:
+  title: Country Borders API
+  description: REST API to verify route between countries
+  version: 0.0.1
+  contact:
+    email: emiraliabduramanov@gmail.com
+    name: Emirali
+    url: https://www.linkedin.com/in/emiraliabduramanov8381b455/
+
+paths:
+  /routing/{origin}/{destination}:
+    parameters:
+      - $ref: "#/components/parameters/OriginParam"
+      - $ref: "#/components/parameters/DestinationParam"
+    get:
+      summary: Get routes between two countries
+      tags:
+        - countries route
+      responses:
+        '200':
+          description: The route  between two countries
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Route"
+        '400':
+          description: Not found
+
+components:
+  parameters:
+    OriginParam:
+      name: origin
+      in: path
+      required: true
+      schema:
+        type: string
+    DestinationParam:
+      name: destination
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    Route:
+      type: object
+      properties:
+        routes:
+          type: array
+          items:
+            type: string

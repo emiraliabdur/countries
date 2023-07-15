@@ -1,0 +1,22 @@
+server:
+  port : 8080
+
+client:
+  mledoze:
+    url: https://raw.githubusercontent.com/mledoze
+
+feign:
+  client:
+    config:
+      feignName:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+        decode404: false
+  compression:
+    request:
+      enabled: true
+
+caching:
+  spring:
+    countryGraphTimeToLive: 86400000 # 24 hours
